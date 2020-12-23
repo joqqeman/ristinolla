@@ -23,134 +23,59 @@ public class RistinollaSovellus extends Application {
     ristinolla.setHgap(10);
     ristinolla.setVgap(10);
     String vuorossa = "x";
+    Label vuoro = new Label();
+    Label loppu = new Label();
+
     
-    Button nappi1 = new Button("");
-    Button nappi2 = new Button("");
-    Button nappi3 = new Button("");
-    Button nappi4 = new Button("");
-    Button nappi5 = new Button("");
-    Button nappi6 = new Button("");
-    Button nappi7 = new Button("");
-    Button nappi8 = new Button("");
-    Button nappi9 = new Button("");
-    nappi1.setFont(Font.font("Monospaced", 40));
-    nappi2.setFont(Font.font("Monospaced", 40));
-    nappi3.setFont(Font.font("Monospaced", 40));
-    nappi4.setFont(Font.font("Monospaced", 40));
-    nappi5.setFont(Font.font("Monospaced", 40));
-    nappi6.setFont(Font.font("Monospaced", 40));
-    nappi7.setFont(Font.font("Monospaced", 40));
-    nappi8.setFont(Font.font("Monospaced", 40));
-    nappi9.setFont(Font.font("Monospaced", 40));
+    //Button nappi1 = new Button("");
+ 
+    //nappi1.setFont(Font.font("Monospaced", 40));
+
                   
-    ristinolla.add(nappi1, 0, 0);
-    ristinolla.add(nappi2, 1, 0);    
-    ristinolla.add(nappi3, 2, 0);
-    ristinolla.add(nappi4, 0, 1);
-    ristinolla.add(nappi5, 1, 1);    
-    ristinolla.add(nappi6, 2, 1);
-    ristinolla.add(nappi7, 0, 2);
-    ristinolla.add(nappi8, 1, 2);    
-    ristinolla.add(nappi9, 2, 2);
-                
-        
-        
-    Label vuoro = new Label("Vuoro: " + vuorossa);
-    Label loppu = new Label("Loppu!");
+    //ristinolla.add(nappi1, 0, 0);
+
+    int rivit = 3;
+    int sarakkeet = 3;
+    int[][] ristikko = new int[rivit][sarakkeet];
     
-    nappi1.setOnMousePressed((event) -> {
+    //***KORJAA TÄMÄ OSUUS*** Siirrä button event funktio tänne
+        for (int rivi = 0; rivi < ristikko.length; rivi++) {
+        for (int sarake = 0; sarake < ristikko[rivi].length; sarake++) {
+        //int arvo = ristikko[rivi][sarake];
+        Button nappi = luoNappi(vuorossa);
+        ristinolla.add(nappi, sarake, rivi);
+        nappi.setOnMousePressed((event) -> {
         if(vuorossa.equals("x")) {
-            nappi1.setText("X");
+            nappi.setText("X");
             vaihdaVuoro(vuorossa);
             //String vuorossa2 = "o"; 
+            asettelu.setTop(vuoro);
+            vuoro.setText("Vuorossa: " + vuorossa);
+            
         }
         else {
-            nappi1.setText("O");
+            nappi.setText("O");
             vaihdaVuoro(vuorossa);
+            vuoro.setText("Vuorossa: " + vuorossa);
+            asettelu.setTop(vuoro);
+
         }
     });
-    nappi2.setOnMousePressed((event) -> {
-        if(vuorossa.equals("x")) {
-            nappi2.setText("X");
-            //vaihdaVuoro(vuorossa);           
         }
-        else {
-            nappi2.setText("O");
-            //vaihdaVuoro(vuorossa);
-        }
-    });
-    nappi3.setOnMousePressed((event) -> {
-        if(vuorossa.equals("x")) {
-            nappi3.setText("X");
-            //vaihdaVuoro(vuorossa);
-        }
-        else {
-            nappi3.setText("O");
-            //vaihdaVuoro(vuorossa);
-        }
-    });
-    nappi4.setOnMousePressed((event) -> {
-        if(vuorossa.equals("x")) {
-            nappi4.setText("X");
-            //vaihdaVuoro(vuorossa);
-        }
-        else {
-            nappi4.setText("O");
-            //vaihdaVuoro(vuorossa);            
-        }
-    });
-    nappi5.setOnMousePressed((event) -> {
-        if(vuorossa.equals("x")) {
-            nappi5.setText("X");
-            //vaihdaVuoro(vuorossa);
-        }
-        else {
-            nappi5.setText("O");
-            //vaihdaVuoro(vuorossa);    
-        }
-    });
-    nappi6.setOnMousePressed((event) -> {
-        if(vuorossa.equals("x")) {
-            nappi6.setText("X");
-            //vaihdaVuoro(vuorossa);
-        }
-        else    nappi6.setText("O");
-            //vaihdaVuoro(vuorossa);
-    });
-    nappi7.setOnMousePressed((event) -> {
-        if(vuorossa.equals("x")) {
-            nappi7.setText("X");
-            //vaihdaVuoro(vuorossa);
-        }
-        else {
-            nappi7.setText("O");
-            //vaihdaVuoro(vuorossa);            
-        }
-    });
-    nappi8.setOnMousePressed((event) -> {
-        if(vuorossa.equals("x")) {
-            nappi8.setText("X");
-            //vaihdaVuoro(vuorossa);
-        }
-        else {
-            nappi8.setText("O");
-            //vaihdaVuoro(vuorossa);            
-        }
-    });
-    nappi9.setOnMousePressed((event) -> {
-        if(vuorossa.equals("x")) {
-            nappi9.setText("X");
-            //vaihdaVuoro(vuorossa);
-        }
-        else {
-            nappi9.setText("O");
-            //vaihdaVuoro(vuorossa);          
-        }
-    });
+        
+    }
+        
+        
+        
+        
+        
     
     
     
-    asettelu.setTop(vuoro);
+   
+    
+    
+    
     asettelu.setCenter(ristinolla);
     
     
@@ -161,17 +86,24 @@ public class RistinollaSovellus extends Application {
     
     }
 
-    private Boolean vaihdaVuoro(String vuorossa) {
+    private String vaihdaVuoro(String vuorossa) {
         if (vuorossa.equals("x")) {
-            return true;
+            vuorossa.replace("x", "o");
+            return vuorossa;
         }
         else {
-            return false;
+            vuorossa.replace("o", "x");
+            return vuorossa;
         }
-    //}
+        }
     
     
-    
+    private Button luoNappi(String vuorossa) {
+        Button nappi = new Button();
+        nappi.setFont(Font.font("Monospaced", 40));
+        
+        return nappi;
+    }
     
     //Button nappi = new Button(" ");
     //nappi.setFont(Font.font("Monospaced", 40));
