@@ -47,18 +47,19 @@ public class RistinollaSovellus extends Application {
         nappi.setOnMousePressed((event) -> {
         if(vuorossa.equals("x")) {
             nappi.setText("X");
-            vaihdaVuoro(vuorossa);
-            //String vuorossa2 = "o"; 
+            //vaihdaVuoro(vuorossa);
+            String vuorossa2 = "o"; 
             asettelu.setTop(vuoro);
             vuoro.setText("Vuorossa: " + vuorossa);
-            
+            vuorossa.replaceAll(vuorossa, vuorossa2);
         }
         else {
             nappi.setText("O");
-            vaihdaVuoro(vuorossa);
+            String vuorossa2 = "x"; 
+            //vaihdaVuoro(vuorossa);
             vuoro.setText("Vuorossa: " + vuorossa);
             asettelu.setTop(vuoro);
-
+            vuorossa.replaceAll(vuorossa, vuorossa2);
         }
     });
         }
